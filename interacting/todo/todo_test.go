@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/tiagoneves.tia/powerful-cli-app-go/interacting/todo/cmd/todo"
+	"github.com/tiagoneves.tia/powerful-cli-app-go/interacting/todo"
 )
 
 func TestAdd(t *testing.T) {
