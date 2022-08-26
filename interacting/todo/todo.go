@@ -103,7 +103,33 @@ func (l *List) String() string {
 			prefix = "X "
 		}
 		// Adjust the item number k to print numbers stating from 1 instead of 0
-		formatted += fmt.Sprintf("%d) %s %s\n", k+1, prefix, t.Task)
+		formatted += fmt.Sprintf("%d)%s %s\n", k+1, prefix, t.Task)
+	}
+	return formatted
+}
+
+func (l *List) Pretty() string {
+	formatted := ""
+
+	for k, t := range *l {
+		prefix := "No"
+		if t.Done {
+			prefix = "Yes!"
+		}
+		// Adjust the item number k to print numbers stating from 1 instead of 0
+		formatted += fmt.Sprintf("# ID: %d\n# Is completed: %s\n# Description: %s\n# Created in: %s\n\n", k+1, prefix, t.Task, t.CreateAt.Format("2006-01-02 15:04:05"))
+	}
+	return formatted
+}
+
+func (l *List) Completed() string {
+	formatted := ""
+
+	for k, t := range *l {
+		if t.Done {
+			// Adjust the item number k to print numbers stating from 1 instead of 0
+			formatted += fmt.Sprintf("%d) %s\n", k+1, t.Task)
+		}
 	}
 	return formatted
 }
